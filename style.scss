@@ -1,0 +1,134 @@
+@import "assets/scss/config/fonts";
+@import "assets/scss/config/reset";
+@import "assets/scss/config/vars";
+@import "assets/scss/config/utility";
+@import "assets/scss/modules/typography";
+@import "assets/scss/modules/fields";
+@import "assets/scss/modules/buttons";
+@import "assets/scss/modules/toast";
+@import "assets/scss/config/global";
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+.app-author {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.app-container {
+  --gap: 15px;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background-color: var(--bcs-grey-4);
+  padding: 10px;
+}
+
+.modal-component {
+  display: grid;
+  gap: var(--gap);
+
+  .overlay {
+    position: fixed;
+    display: grid;
+    place-items: center;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 20px;
+    background-color: rgba(27, 33, 36, 0.62);
+    pointer-events: none;
+    user-select: none;
+    opacity: 0;
+    visibility: hidden;
+    z-index: -99;
+    transition: all 0.25s ease;
+
+    &.open {
+      pointer-events: auto;
+      user-select: auto;
+      opacity: 1;
+      visibility: visible;
+      z-index: 99;
+
+      .modal {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    &.hidden {
+      pointer-events: none;
+      user-select: none;
+      opacity: 0;
+      visibility: hidden;
+      z-index: -99;
+      transition: all 0.3s 0.2s ease;
+
+      .modal {
+        transform: scale(1.2);
+        opacity: 0;
+      }
+    }
+  }
+
+  .modal {
+    background-color: #fff;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.05), 0 25px 35px rgba(0, 0, 0, 0.03);
+    border-radius: 8px;
+    text-align: center;
+    display: grid;
+    justify-items: flex-start;
+    gap: var(--gap);
+    max-width: 500px;
+    width: 100%;
+    overflow: hidden;
+    padding: 20px;
+    position: relative;
+    transform: scale(1.2);
+    opacity: 0;
+    transition: all 0.3s 0.2s ease;
+
+    button:nth-child(1) {
+      padding: 5px;
+      border: none;
+      background-color: transparent;
+      margin-left: auto;
+      position: absolute;
+      right: 20px;
+      top: 20px;
+
+      &:hover,
+      &:focus {
+        background-color: transparent;
+      }
+    }
+
+    svg {
+      pointer-events: none;
+    }
+
+    h2 {
+      padding-right: 40px;
+    }
+
+    p {
+      min-height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    button:nth-of-type(2) {
+      width: 100%;
+    }
+  }
+}
+
+
